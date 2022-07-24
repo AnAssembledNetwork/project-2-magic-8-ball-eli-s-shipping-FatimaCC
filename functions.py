@@ -17,6 +17,7 @@ def fortune(name,question):
   
   #Possible answers for the magic 8-Ball
     possible_answers=["Yes - definitely.", "It is decidedly so.", "Without a doubt.","Reply hazy, try again.","Ask again later.","Better not tell you now.","My sources say no.","Outlook not so good.","Very doubtful."]
+  
   #final answer
     best_answer=random.choice(possible_answers)
   
@@ -25,7 +26,13 @@ def fortune(name,question):
     first_name=name[0:name_index]
   
   #final output
-    return print(f"{first_name}' Question: {question}\nMagic 8-Ball's answer: {best_answer}")
+    if (first_name[-1]) == ('s'):
+      print(f"{first_name}' Question: {question}\nMagic 8-Ball's answer: {best_answer}")
+    else:
+      print(f"{first_name}'s Question: {question}\nMagic 8-Ball's answer: {best_answer}")
+    
+  
+
 
 
 def shipping(weight):
@@ -34,43 +41,42 @@ def shipping(weight):
     lbs_in_one_kg=2.20462
     lbs=(weight * lbs_in_one_kg)
   
-  #Ground Shipping
+  #Ground Shipping fees 
     if (lbs <= 2):
       ground_shipping=(weight * 1.50) + 20
       print(f"The price of ground shipping is ${ground_shipping:.2f}.")
     elif (lbs > 2 and lbs <= 6):
-      ground_shipping_2=(weight*3) + 20
-      print(f"The price of ground shipping is ${ground_shipping_2:.2f}.")
+      ground_shipping=(weight*3) + 20
+      print(f"The price of ground shipping is ${ground_shipping:.2f}.")
     elif(lbs > 6 and lbs <= 10):
-      ground_shipping_3=(weight*4) + 20
-      print(f"The price of ground shipping is ${ground_shipping_3:.2f}.")
+      ground_shipping=(weight*4) + 20
+      print(f"The price of ground shipping is ${ground_shipping:.2f}.")
     else:
-      ground_shipping_4=(weight*4.75) + 20
-      print(f"The price of ground shipping is ${ground_shipping_4:.2f}.")
+      ground_shipping=(weight*4.75) + 20
+      print(f"The price of ground shipping is ${ground_shipping:.2f}.")
     
-
-  #Ground Shipping Premium
+  #Ground Shipping Premium fees
     ground_shipping_premium=125
     print(f"The price of premium ground shipping is ${ground_shipping_premium:.2f}.")
 
-
-  #Drone Shipping 
+  #Drone Shipping fees
     if (lbs <= 2):
       drone_shipping=(weight*4.50)
       print(f"The price of drone shipping is ${drone_shipping:,.2f}.")
-    elif (lbs >= 2 and lbs <= 6):
-      drone_shipping_2=(weight*9)
-      print(f"The price of drone shipping is ${drone_shipping_2:,.2f}.")
+    elif (lbs > 2 and lbs <= 6):
+      drone_shipping=(weight*9)
+      print(f"The price of drone shipping is ${drone_shipping:,.2f}.")
     elif(lbs > 6 and lbs <= 10):
-      drone_shipping_3=(weight*12)
-      print(f"The price of drone shipping is ${drone_shipping_3:,.2f}.")
+      drone_shipping=(weight*12)
+      print(f"The price of drone shipping is ${drone_shipping:,.2f}.")
     else:
-      drone_shipping_4=(weight*14.25)
-      print(f"The price of drone shipping is ${drone_shipping_4:,.2f}.")
-
-    ground_shipping_=ground_shipping_4
+      drone_shipping=(weight*14.25)
+      print(f"The price of drone shipping is ${drone_shipping:,.2f}.")
+      
+  #best shipping method to save the most money
+    ground_shipping_=ground_shipping
     premium_shipping=125
-    drone_shipping_=drone_shipping_4
+    drone_shipping_=drone_shipping
     if ground_shipping_ < premium_shipping and ground_shipping_ < drone_shipping_:
       print(f"To save the most money, you should choose ground shipping!")
     elif drone_shipping_ < ground_shipping_ and drone_shipping_ < premium_shipping:
@@ -83,15 +89,19 @@ def shipping(weight):
 def main():
 
   #collecting input from the user for Magic 8-Ball
+  print("Magic 8-Ball")
   name=input("What is your full name? ")
   question=input("What is your question you would like to answer? ")
+  #passing the values of name and question to the fortune function
   fortune(name,question)
   print()
   print()
   
   #collecting input from the user for Eli's Shipping
+  print("Eli's Shipping")
   kg=int(input("What is your pacakge weight in kg? "))
   print() 
+  #passing the weight in kg to the shipping function
   weight=shipping(kg)
 
 
