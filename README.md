@@ -12,7 +12,7 @@ This project helped me a lot to practice the following properties of functions :
 
 For magic 8 ball I had to code a program that ask the user their name and a question that they would like to have an aswer to.
 Then once the program has the question of the user the next thing is to choose a random answer from the magic 8 ball and  print 
-them a statement with their first name, their question and the random ansewer from the magic ball.
+them a statement with their first name, their question and the random answer from the magic ball.
 
 ## Eli's Shipping
 
